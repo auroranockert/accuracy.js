@@ -1,10 +1,13 @@
 LogTest = TestCase("Log")
 
 LogTest.prototype.testGenerated = function () {
-	if (accurate) {
-		ulp = 1
-	} else {
-		ulp = 1
+	switch (window.accuracy) {
+	case 'exact':
+		window.ulp = 1; break
+	case 'OpenCL':
+		window.ulp = 4; break
+	default:
+		window.ulp = 2; break
 	}
 	
 	assertULP(Math.log, 0xC0, 0x7B, 0xF4, 0x33, 0xA7, 0x5D, 0xE2, 0x1D, 5.705795134423042e-195, -447.2626107852282)

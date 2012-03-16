@@ -1,10 +1,9 @@
 SqrtTest = TestCase("Sqrt")
 
 SqrtTest.prototype.testGenerated = function () {
-	if (accurate) {
-		ulp = 1
-	} else {
-		ulp = 1
+	switch (window.accuracy) {
+	default:
+		window.ulp = 1; break
 	}
 	
 	assertULP(Math.sqrt, 0x2B, 0xC4, 0xA6, 0xF7, 0xA9, 0x32, 0x31, 0x09, 5.705795134423042e-195, 7.553671381800403e-98)

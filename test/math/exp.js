@@ -1,10 +1,13 @@
 ExpTest = TestCase("Exp")
 
 ExpTest.prototype.testGenerated = function () {
-	if (accurate) {
-		ulp = 1
-	} else {
-		ulp = 1
+	switch (window.accuracy) {
+	case 'exact':
+		window.ulp = 1; break
+	case 'OpenCL':
+		window.ulp = 4; break
+	default:
+		window.ulp = 2; break
 	}
 	
 	assertULP(Math.exp, 0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 5.705795134423042e-195, 1.0)

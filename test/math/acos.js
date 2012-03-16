@@ -1,10 +1,13 @@
 AcosTest = TestCase("Acos")
 
 AcosTest.prototype.testGenerated = function () {
-	if (accurate) {
-		ulp = 2
-	} else {
-		ulp = 5
+	switch (window.accuracy) {
+	case 'exact':
+		window.ulp = 1; break
+	case 'OpenCL':
+		window.ulp = 5; break
+	default:
+		window.ulp = 2; break
 	}
 	
 	assertULP(Math.acos, 0x3F, 0xF9, 0x21, 0xFB, 0x54, 0x44, 0x2D, 0x18, 5.705795134423042e-195, 1.5707963267948966)

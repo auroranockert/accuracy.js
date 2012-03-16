@@ -1,10 +1,13 @@
 PowTest = TestCase("Pow")
 
 PowTest.prototype.testGenerated = function () {
-	if (accurate) {
-		ulp = 2
-	} else {
-		ulp = 5
+	switch (window.accuracy) {
+	case 'exact':
+		window.ulp = 1; break
+	case 'OpenCL':
+		window.ulp = 17; break
+	default:
+		window.ulp = 2; break
 	}
 	
 	assertULP(Math.pow, 0x7F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 5.705795134423042e-195, -2.687423637891058e+124, Infinity)

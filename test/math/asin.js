@@ -1,10 +1,13 @@
 AsinTest = TestCase("Asin")
 
 AsinTest.prototype.testGenerated = function () {
-	if (accurate) {
-		ulp = 2
-	} else {
-		ulp = 5
+	switch (window.accuracy) {
+	case 'exact':
+		window.ulp = 1; break
+	case 'OpenCL':
+		window.ulp = 5; break
+	default:
+		window.ulp = 2; break
 	}
 	
 	assertULP(Math.asin, 0x17, 0x9A, 0xA8, 0x39, 0x88, 0xED, 0xCA, 0xFC, 5.705795134423042e-195, 5.705795134423042e-195)

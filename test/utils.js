@@ -1,7 +1,7 @@
-var LE = true // Cheating
-var accurate = true // Cheating
-
 void function() {
+	window.LE = true 		   // Cheating
+	window.accuracy = 'OpenCL' // Cheating
+	
 	var buffer = new ArrayBuffer(8)
 	
 	var floats = new Float64Array(buffer)
@@ -39,10 +39,10 @@ void function() {
 		
 		diff = Math.abs(diff)
 		
-		if (diff >= ulp) {
+		if (diff >= window.ulp) {
 			console.log(diff, diff0, diff1, diff2, diff3, diff4, diff5, diff6, diff7)
 		}
 		
-		assert("Error in ULP should be less than " + ulp + " but is " + diff + " for f(" + input + ") = " + floats[0] + ", expected " + expected + ".", diff < ulp)
+		assert("Error in ULP should be less than " + window.ulp + " but is " + diff + " for f(" + input + ") = " + floats[0] + ", expected " + expected + ".", diff < window.ulp)
 	}
 }()
