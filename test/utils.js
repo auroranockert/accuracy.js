@@ -1,6 +1,6 @@
 void function() {
-	window.LE = true 		   // Cheating
-	window.accuracy = 'OpenCL' // Cheating
+	window.LE = true 		     // Cheating
+	window.accuracy = 'accurate' // Cheating
 	
 	var buffer = new ArrayBuffer(8)
 	
